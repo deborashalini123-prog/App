@@ -77,3 +77,12 @@ app.listen(process.env.PORT || 5000, () => {
     res.json({ success: false, message: "Invalid credentials" });
   }
 });
+app.post('/register', (req, res) => {
+  console.log(req.body); // Check if data is received
+  res.send('Register API hit');
+});
+
+app.post('/login', (req, res) => {
+  console.log(req.body); // Check if data is received
+  res.send('Login API hit');
+});
