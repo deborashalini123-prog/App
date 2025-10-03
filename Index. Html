@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Send & Receive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 350px;
+      height: 500px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .message {
+      max-width: 70%;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 10px;
+      word-wrap: break-word;
+    }
+    .sent {
+      background: #4caf50;
+      color: white;
+      margin-left: auto;
+      border-bottom-right-radius: 0;
+    }
+    .received {
+      background: #e0e0e0;
+      color: black;
+      margin-right: auto;
+      border-bottom-left-radius: 0;
+    }
+    .input-area {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+    .input-area button {
+      padding: 10px 15px;
+      border: none;
+      background: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+    .input-area button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <div class="message received">Hello! How are you?</div>
+      <div class="message sent">I’m good, thank you!</div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="msgInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("msgInput");
+      const messageText = input.value.trim();
+      if (messageText === "") return;
+
+      const messages = document.getElementById("messages");
+
+      // Create "sent" message
+      const sentMessage = document.createElement("div");
+      sentMessage.className = "message sent";
+      sentMessage.textContent = messageText;
+      messages.appendChild(sentMessage);
+
+      // Auto scroll down
+      messages.scrollTop = messages.scrollHeight;
+
+      input.value = "";
+
+      // Simulate a "received" reply
+      setTimeout(() => {
+        const reply = document.createElement("div");
+        reply.className = "message received";
+        reply.textContent = "Got your message: " + messageText;
+        messages.appendChild(reply);
+        messages.scrollTop = messages.scrollHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
