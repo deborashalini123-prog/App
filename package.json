@@ -14,3 +14,11 @@
     "socket.io": "^4.7.1"
   }
 }
+fetch('https://application-6169.onrender.com', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username, password })
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(err => console.error(err));
