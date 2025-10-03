@@ -68,3 +68,12 @@ app.post("/login", (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server running...");
 });
+ app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  // simple check
+  if(username === "user" && password === "1234") {
+    res.json({ success: true, message: "Login successful" });
+  } else {
+    res.json({ success: false, message: "Invalid credentials" });
+  }
+});
