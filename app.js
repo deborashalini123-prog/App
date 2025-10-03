@@ -1,5 +1,5 @@
 // Replace this with your deployed backend URL on Render
-const BACKEND_URL = "https://your-backend-link.onrender.com";
+const BACKEND_URL = "https://application-6169.onrender.com/";
 
 // ====== Register ======
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
@@ -8,7 +8,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   const password = document.getElementById("regPassword").value;
 
   try {
-    const res = await fetch(`${BACKEND_URL}/api/register`, {
+    const res = await fetch(`${https://application-6169.onrender.com/}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -29,7 +29,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const password = document.getElementById("loginPassword").value;
 
   try {
-    const res = await fetch(`${BACKEND_URL}/api/login`, {
+    const res = await fetch(`${https://application-6169.onrender.com/}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
