@@ -42,3 +42,19 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     alert("Failed to login. Check console for errors.");
   }
 });
+const login = async () => {
+  const res = await fetch("https://application-6169.onrender.com/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await res.json(); // parse JSON
+
+  if(data.success) {
+    alert(data.message);       // show success
+    window.location.href = "/dashboard.html"; // redirect if needed
+  } else {
+    alert(data.message);       // show error
+  }
+};
