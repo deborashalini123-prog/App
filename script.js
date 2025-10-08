@@ -1,4 +1,4 @@
-const socket = io("https://application-6169.onrender.com/");
+const socket = io("https://application-6169.onrender.com");
 let username = "";
 
 function register() {
