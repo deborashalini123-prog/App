@@ -30,3 +30,27 @@
   <script src="script.js"></script>
 </body>
 </html>
+ <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+ <input id="msgInput" placeholder="Type a message">
+<button onclick="sendMessage()">Send</button>
+
+<ul id="messages"></ul>
+
+<script>
+  const socket = io("https://YOUR_BACKEND_URL"); // replace with your backend URL
+
+  function sendMessage() {
+    const input = document.getElementById('msgInput');
+    const msg = input.value;
+    if (msg.trim() === "") return;
+    socket.emit('chat message', msg);
+    input.value = "";
+  }
+
+  // Listen for messages
+  socket.on('chat message', (msg) => {
+    const li = document.createElement('li');
+    li.textContent = msg;
+    document.getElementById('messages').appendChild(li);
+  });
+</script>
