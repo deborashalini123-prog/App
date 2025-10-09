@@ -1,3 +1,4 @@
+alert("Chat JS loaded");
 // Connect to your backend Socket.IO server
 const socket = io("https://application-6169.onrender.com"); // your Render backend URL
 
