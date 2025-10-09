@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // check if chat container exists
+    const chatBox = document.getElementById('chat-box'); // change 'chat-box' to your chat container ID
+    if (!chatBox) return; // stop running if this element doesn't exist
+
+    // ===== Put your existing chat.js code BELOW this line =====
+    
+    // Example: your existing chat code
+    // const sendBtn = document.getElementById('send-btn');
+    // sendBtn.addEventListener('click', sendMessage);
+});
 // Connect to backend
 const socket = io("https://application-6169.onrender.com"); // your Render backend URL
 
