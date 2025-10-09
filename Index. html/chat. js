@@ -1,14 +1,14 @@
-alert("Chat JS loaded");
-// Connect to your backend Socket.IO server
+ // Connect to backend
 const socket = io("https://application-6169.onrender.com"); // your Render backend URL
 
+// Get elements
 const chatBox = document.getElementById("chat-box");
 const msgInput = document.getElementById("msg");
 const sendBtn = document.getElementById("sendBtn");
 
-// Load old messages when connected
+// Load old messages
 socket.on("loadMessages", (messages) => {
-  chatBox.innerHTML = ""; // clear old
+  chatBox.innerHTML = "";
   messages.forEach((msg) => displayMessage(msg.text, msg.sender === "You"));
 });
 
@@ -18,25 +18,21 @@ sendBtn.addEventListener("click", () => {
   if (message === "") return;
 
   const data = { text: message, sender: "You" };
-
-  // Send to backend
   socket.emit("sendMessage", data);
-
-  // Show instantly
   displayMessage(message, true);
   msgInput.value = "";
 });
 
-// Receive message from backend
+// Receive messages from backend
 socket.on("receiveMessage", (data) => {
   if (data.sender !== "You") displayMessage(data.text, false);
 });
 
-// Display message in chat
+// Display message in chat box
 function displayMessage(message, isOwn) {
   const div = document.createElement("div");
   div.classList.add("message");
-  if (isOwn) div.classList.add("my-message");
+  div.classList.add(isOwn ? "my-message" : "other-message");
   div.textContent = message;
   chatBox.appendChild(div);
   chatBox.scrollTop = chatBox.scrollHeight;
