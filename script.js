@@ -5,9 +5,7 @@ function register() {
   const user = document.getElementById("username").value.trim();
   const pass = document.getElementById("password").value.trim();
   if (!user || !pass) return alert("Please fill all fields!");
-  window.location.href = "chat.html";
-}else{
- alert("Registered successfully! Now login.");
+  alert("Registered successfully! Now login.");
 }
 
 function login() {
